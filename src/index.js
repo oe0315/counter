@@ -1,17 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
 
+const CountApp = () => {
+  const [count, setCount] = useState(0);
+  const plus = () => {
+    setCount(count + 1)
+  }
+  const minus = () => {
+    setCount(count - 1);
+  };
+
+  return (
+    <div>
+      <h1>カウンターApp</h1>
+      <p>{count}</p>
+      <div>
+        <button onClick={plus}>+</button>
+        <button onClick={minus}>-</button>
+      </div>
+    </div>
+  );
+};
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  <CountApp />,                       // HelloWorldコンポーネントを
+  document.getElementById('root')       // id='root'の要素にrenderする
 );
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
